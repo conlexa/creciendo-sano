@@ -1,0 +1,33 @@
+.lista-faqs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.item-faq {
+  display: flex;
+  flex-direction: column;
+}
+
+.boton-faq {
+  width: 100%;
+  background-color: var(--color-secundario-naranja-500);
+  color: var(--color-neutro-100);
+  border: none;
+  padding: 14px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
+.boton-faq:hover {
+  filter: brightness(0.9);
+}
+
+.respuesta-faq {
+  margin-top: 8px;
+  background-color: var(--color-neutro-100);
+  border-radius: 12px;
+  padding: 16px 20px;
+}

@@ -1,0 +1,118 @@
+.menu-oculto {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    width: 100%;
+    gap: 25px;
+    padding-top: 25px;
+}
+
+.menu-oculto .icono-plato {
+    height: 40px;
+    width: 40px;
+    background-color: var(--color-primario-500);
+    mask-image: url('../assets/icono-plato.png');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+}
+
+.menu-oculto .tarjeta-menu {
+    border: 1px solid var(--color-primario-500);
+    padding: 20px 10px 10px 10px;
+    width: 100%;
+    border-radius: 20px;
+    background-color: var(--color-primario-100);
+    position: relative;
+}
+
+.menu-oculto .dia {
+    background-color: var(--color-secundario-naranja-500);
+    width:fit-content;
+    padding: 5px 10px;
+    border-radius: 20px;
+    color: var(--color-neutro-100);
+    position: absolute;
+    top: -15px;
+    z-index: 1;
+}
+
+.menu-oculto .razon {
+    background-color: var(--color-secundario-naranja-500);
+    width:fit-content;
+    padding: 2px 60px;
+    border-radius: 20px;
+    color: var(--color-neutro-100);
+    position: absolute;
+    top: -10px;
+    left: 60px;
+}
+
+.menu-oculto .info-plato {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-oculto .info-plato div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu-oculto .info-plato .nombre-plato {
+    color: var(--color-primario-500);
+}
+
+.menu-oculto .info-plato .precio-plato {
+    color: var(--color-primario-500);
+}
+
+.menu-oculto .info-plato .btn-cambiar {
+    color: var(--color-neutro-100);
+    background-color: var(--color-primario-500);
+    border: none;
+    border-radius: 20px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.menu-oculto .info-plato .btn-cambiar i {
+    display: flex;
+}
+
+.menu-oculto .info-plato .btn-cambiar:hover {
+    filter: brightness(0.9);
+}
+
+.menu-oculto .contenedor-pines {
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+.menu-oculto .pin-componente {
+    color: var(--color-neutro-100);
+    width: fit-content;
+    background-color: var(--color-secundario-purpura-500);
+    border: none;
+    border-radius: 20px;
+    padding: 3px 8px;
+}
+
+.menu-oculto .pin-consejo {
+    color: var(--color-neutro-100);
+    width: fit-content;
+    background-color: var(--color-secundario-magenta-500);
+    border: none;
+    border-radius: 20px;
+    padding: 3px 8px;
+}
+
+.menu-oculto .menu-total {
+    color: var(--color-primario-500);
+    padding-top: 30px;
+}
+

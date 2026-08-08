@@ -1,0 +1,42 @@
+.hero .contenedor {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+}
+
+.hero .contenedor-logo {
+    display: flex;
+    align-items:center;
+}
+
+.hero .logo {
+    height: 20px;
+    width: 20px;
+    background-color: var(--color-neutro-100);
+    mask-image: url('../assets/logo.png');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    justify-self: center;
+}
+
+.hero .logo-texto {
+    color: var(--color-neutro-100);
+}
+
+.hero .izq {
+    max-width: 43%;
+}
+
+.hero h1 {
+    color: var(--color-acento-500);
+}
+
+.hero .descripcion {
+    padding-top: 20px;
+    color: var(--color-neutro-100);
+}
+
+.hero img {
+    height: 200px;
+}

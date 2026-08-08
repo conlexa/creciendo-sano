@@ -1,0 +1,23 @@
+.menu-inicial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 65px 0;
+}
+
+.menu-inicial .icono-plato {
+    height: 80px;
+    width: 80px;
+    background-color: var(--color-primario-500);
+    mask-image: url('../assets/icono-plato.png');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    justify-self: center;
+}
+
+.menu-inicial p {
+    color: var(--color-primario-500);
+    text-align: center;
+}
+

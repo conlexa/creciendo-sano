@@ -1,0 +1,16 @@
+.contenedor-secciones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+}
+
+.contenedor-tarjeta {
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedor-secciones-izquierda {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}

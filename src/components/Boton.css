@@ -1,0 +1,12 @@
+.boton {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: var(--color-neutro-100);
+    width: 100%;
+    cursor: pointer;
+}
+
+.boton:hover {
+    filter: brightness(0.9);
+}

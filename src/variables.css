@@ -1,0 +1,79 @@
+
+/*===========================================================================
+VARIABLES - NO MODIFICAR
+(no usar directamente, solo como referencia y para elegir el color)
+=============================================================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap');
+
+:root {
+    /*==================
+    COLORES
+    ====================*/
+
+    /*COLOR PRIMARIO*/
+    --color-primario-500: #14B88A;
+    --color-primario-300: #A4E5DE;
+    --color-primario-100: #DCF4ED;
+
+
+    /*COLORES SECUNDARIOS*/    
+    /*Magenta*/
+    --color-secundario-magenta-500: #CB30E0;
+    --color-secundario-magenta-300: #EAACF3;
+    --color-secundario-magenta-100: #FCE9FF;
+    /*Púrpura*/
+    --color-secundario-purpura-500: #6155F5;
+    --color-secundario-purpura-300: #C0BBFB;
+    --color-secundario-purpura-100: #F0EFFF;
+    /*Naranja*/
+    --color-secundario-naranja-500: #F28C38;
+    --color-secundario-naranja-300: #FAD1AF;
+
+
+    /*COLOR DE ACENTO*/
+    --color-acento-500: #FFCC00;
+
+    /*COLORES NEUTROS*/
+    --color-neutro-300: #555956;
+    --color-neutro-200: #FFF6E9;
+    --color-neutro-100: #F9F9F9;
+    --color-neutro-verdoso: #A0B9A8;
+    --color-neutro-purpuroso: #A2A0B9;
+
+    /*==================
+    TIPOGRAFÍA
+    ====================*/
+
+    /*FUENTES*/
+    --fuente-heading: 'Quicksand', sans-serif;
+    --fuente-texto: 'Open Sans', sans-serif;
+
+    /*HEADINGS*/
+    --h1-size: 40px;
+    --h2-size: 20px;
+    --h3-size: 16px;
+    --h4-size: 14px;
+    --h5-size: 12px;
+    --heading-weight: 700;
+
+    /*TEXTO*/
+    --texto-l-size: 18px;
+    --texto-m-size: 16px;
+    --texto-s-multi-size: 12px;
+    --texto-s-multi-lineheight: 19px;
+    --texto-s-size: 12px;
+    --texto-xs-size: 11px;
+    --texto-weight: 600;
+
+    /*LOGOTIPO*/
+    --logotipo-m-size: 20px;
+    --logotipo-s-size: 14px;
+    --logotipo-style: italic;
+
+    /*==================
+    DIMENSIONES
+    ====================*/
+    --contenedor-width: 90%;
+    --contenedor-max-width: 1200px;
+}

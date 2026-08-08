@@ -1,0 +1,64 @@
+
+
+
+.sobre-proyecto-contenido {
+  max-width: 800px; 
+  width: 90%;       
+  margin: 0 auto;   
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.seccion-bloque {
+  margin-bottom: 40px;
+}
+
+.seccion-bloque h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+.lista-faqs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.item-faq {
+  display: flex;
+  flex-direction: column;
+}
+
+.boton-faq {
+  width: 100%;
+  background-color: #F48C36;
+  color: #FFFFFF;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
+.boton-faq:hover {
+  background-color: #e07b28;
+}
+
+.texto {
+  color: var(--color-neutro-300);
+}
+
+.respuesta-faq {
+  margin-top: 8px;
+}
+
+/* --- Contacto --- */
+.contacto-bloque {
+  text-align: center;
+}
+
+.email-contacto {
+  margin-top: 10px;
+}

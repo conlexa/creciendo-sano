@@ -1,0 +1,79 @@
+.footer .contenedor {
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.footer .contenedor-logo {
+    display: flex;
+    align-items:center;
+}
+
+.footer .logo {
+    height: 20px;
+    width: 20px;
+    background-color: var(--color-neutro-100);
+    mask-image: url('../assets/logo.png');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    justify-self: center;
+}
+
+.footer .logo-texto {
+    color: var(--color-neutro-100);
+}
+
+.footer .contenedor-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding-bottom: 20px;
+}
+
+.footer .contenedor-proyecto {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 90%;
+}
+
+.footer .contenedor-navegacion {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 5px;
+}
+
+.footer .contenedor-datos {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.footer .contenedor-ayuda {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 5px;
+}
+
+.footer .contenedor-datos a {
+    text-decoration: none;
+}
+
+.footer h5 {
+    padding-bottom: 10px;
+}
+
+.footer .enlace {
+    background: none;
+    border: none;
+    color: var(--color-neutro-100);
+    cursor: pointer;
+}
+
+.footer .contenedor-proyecto .descripcion, .contenedor-navegacion p, .contenedor-datos a, .contenedor-ayuda p {
+    color: var(--color-neutro-100);
+}
+
+.footer .advertencia {
+    padding-top: 20px;
+}

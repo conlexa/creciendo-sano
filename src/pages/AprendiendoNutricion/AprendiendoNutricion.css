@@ -1,0 +1,46 @@
+.aprendiendo-contenido {
+    width: 90%;
+}
+
+.aprendiendo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 40px;
+}
+
+.aprendiendo-tarjeta {
+    display: flex;
+    width: 100%;
+    border: 3px solid transparent;
+    border-radius: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.aprendiendo-tarjeta-imagen {
+    width: 38%;
+    object-fit: cover;
+    border-radius: 20px 0 0 20px;
+}
+
+.aprendiendo-tarjeta .tarjeta {
+    flex: 1;
+}
+
+.aprendiendo-tarjeta .tarjeta .titulo {
+    border-radius: 0 20px 0 0;
+}
+
+.aprendiendo-tarjeta .tarjeta .cuerpo {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    border-radius: 0 0 20px 0;
+}
+
+.aprendiendo-tarjeta-texto {
+    color: var(--color-neutro-300);
+    line-height: 1.5;
+}
+
+

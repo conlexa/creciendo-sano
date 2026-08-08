@@ -1,0 +1,131 @@
+@import './variables.css';
+
+/*==================================================================================
+ARCHIVO DE ESTILOS GLOBALES — NO MODIFICAR
+==================================================================================*/
+
+/*=======================
+CONFIGURACIONES GENERALES
+========================*/
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+/*==================================================================================
+USAR ESTOS HEADINGS (solo cambiar color donde corresponda en el css de cada sección)
+==================================================================================*/
+
+h1 {
+    font-family: var(--fuente-heading);
+    font-size: var(--h1-size);
+    font-weight: var(--heading-weight);
+}
+ 
+h2 {
+    font-family: var(--fuente-heading);
+    font-size: var(--h2-size);
+    font-weight: var(--heading-weight);
+}
+ 
+h3 {
+    font-family: var(--fuente-heading);
+    font-size: var(--h3-size);
+    font-weight: var(--heading-weight);
+}
+ 
+h4 {
+    font-family: var(--fuente-heading);
+    font-size: var(--h4-size);
+    font-weight: var(--heading-weight);
+}
+ 
+h5 {
+    font-family: var(--fuente-heading);
+    font-size: var(--h5-size);
+    font-weight: var(--heading-weight);
+}
+ 
+/*=====================================================================================================
+USAR ESTAS CLASES PARA TEXTO Y LOGOTIPO (solo cambiar color donde corresponda en el css de cada sección)
+======================================================================================================*/
+
+/*TEXTO*/
+.texto-l {
+    font-family: var(--fuente-texto);
+    font-size: var(--texto-l-size);
+    font-weight: var(--texto-weight);
+}
+
+.texto-m {
+    font-family: var(--fuente-texto);
+    font-size: var(--texto-m-size);
+    font-weight: var(--texto-weight);
+} 
+ 
+.texto-s-multi {
+    font-family: var(--fuente-texto);
+    font-size: var(--texto-s-multi-size);
+    line-height: var(--texto-s-multi-lineheight);
+    font-weight: var(--texto-weight);
+}
+ 
+.texto-s {
+    font-family: var(--fuente-texto);
+    font-size: var(--texto-s-size);
+    font-weight: var(--texto-weight);
+}
+ 
+.texto-xs {
+    font-family: var(--fuente-texto);
+    font-size: var(--texto-xs-size);
+    font-weight: var(--texto-weight);
+}
+ 
+/*LOGOTIPO*/
+.logotipo-m {
+    font-family: var(--fuente-heading);
+    font-size: var(--logotipo-m-size);
+    font-style: var(--logotipo-style);
+}
+ 
+.logotipo-s {
+    font-family: var(--fuente-heading);
+    font-size: var(--logotipo-s-size);
+    font-style: var(--logotipo-style);
+}
+
+/*==================================
+USAR ESTA CLASE PARA CADA CONTENEDOR
+==================================*/
+.contenedor {
+    width: var(--contenedor-width);
+    max-width: var(--contenedor-max-width);
+    margin: 0 auto;
+}
+
+/*==================================
+CLASE RESERVADA PARA EL CONTENEDOR DE LA APP
+==================================*/
+
+.app-contenedor {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: var(--color-neutro-200);
+    height: 100%;
+}
+
+.app-contenedor > *:not(.nav) {
+    margin-top: 20px;
+}

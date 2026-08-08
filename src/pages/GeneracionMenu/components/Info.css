@@ -1,0 +1,59 @@
+.extra {
+    display: block;
+}
+
+.extra .info {
+    background-color: var(--color-secundario-magenta-100);
+    padding: 20px;
+    border-radius: 20px;
+    color: var(--color-neutro-300)
+}
+
+.extra .consejos {
+    display: flex;
+    padding: 20px;
+    background-color: var(--color-secundario-magenta-100);
+    border-radius: 20px;
+    margin-top: 20px;
+    position: relative;
+}
+
+.extra .consejos .icono {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-secundario-magenta-500);
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.extra .consejos img{
+    height: 30px;
+}
+
+.extra .consejos .tip {
+    color: var(--color-neutro-300);
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.extra .consejos .izq, .der {
+    display: flex;
+    align-items: center;
+}
+
+.extra .consejos button {
+    line-height: 0;
+    cursor: pointer;
+    border: 0;
+}
+
+.extra .consejos .izq i, .der i{
+    font-size: 40px;
+    color: var(--color-secundario-magenta-500);
+}
