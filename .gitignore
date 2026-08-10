@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Lockfiles de otros gestores (el proyecto usa pnpm)
+package-lock.json
+yarn.lock
+
 # Environment variables
 .env
 .env.local
