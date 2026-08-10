@@ -3,12 +3,13 @@ import './CalculadoraNutricional.css';
 import { ALIMENTOS_DB } from './data';
 import Hero from '../../components/Hero';
 import Nav from '../../components/Nav';
-import imagen from './assets/hero.png'
-import imagenNav from './assets/icono-nav.png'
 import Footer from '../../components/Footer';
+import Tarjeta from '../../components/Tarjeta';
+import Boton from '../../components/Boton';
+import imagen from './assets/hero.png';
+import imagenNav from './assets/icono-nav.png';
 
-
-function CalculadoraNutricional(props) {
+export default function CalculadoraNutricional(props) {
   const [busqueda, setBusqueda] = useState('');
   const [resultado, setResultado] = useState(null);
   const [error, setError] = useState(false);
@@ -42,86 +43,81 @@ function CalculadoraNutricional(props) {
 
   return (
     <>
-        <Hero
-            titulo = 'Descubre qué hay en cada alimento'
-            descripcion = 'Busca cualquier alimento y conoce su aporte real en segundos'
-            alt = 'Calculadora de nutrición infantil'
-            imagen = {imagen}
-            paginaActiva= {props.paginaActiva}
-        />
+      <Hero
+        titulo='Descubre el valor nutricional de cada alimento'
+        descripcion='Busca un alimento y conoce sus macronutrientes, minerales y vitaminas'
+        alt='alt'
+        imagen={imagen}
+        paginaActiva={props.paginaActiva}
+      />
+      <Nav paginaActiva={props.paginaActiva} onCambiarPagina={props.onCambiarPagina} imagenNav={imagenNav} />
 
-        <Nav paginaActiva={props.paginaActiva} onCambiarPagina={props.onCambiarPagina} imagenNav={imagenNav}/>
+      <div className="contenedor">
+      <Tarjeta paginaActiva={props.paginaActiva} titulo='BUSCADOR DE ALIMENTOS'>
+        <form onSubmit={handleBuscar} className="search-form">
+          <label className="input-label texto-s">Escribe el alimento a examinar:</label>
+          <input
+            type="text"
+            className="search-input texto-m"
+            placeholder="Ej. zanahoria, manzana, huevo, pollo, palta..."
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)}
+          />
+          <Boton paginaActiva={props.paginaActiva} texto='Calcular valor nutricional' type='submit' />
+        </form>
 
-        <div className="calculator-container contenedor">
-          <h3 className="card-header">BUSCADOR DE ALIMENTOS</h3>
-          
-          <form onSubmit={handleBuscar} className="search-form">
-            <label className="input-label texto-m">Escribe el alimento a examinar:</label>
-            <input
-              type="text"
-              className="search-input texto-m"
-              placeholder="Ej. zanahoria, manzana, huevo, pollo, palta..."
-              value={busqueda}
-              onChange={(e) => setBusqueda(e.target.value)}
-            />
-            <button type="submit" className="submit-btn texto-m">
-              Calcular valor nutricional
-            </button>
-          </form>
+        {error && (
+          <p className="error-msg texto-s">
+            Alimento no encontrado. Prueba con: <strong>zanahoria, platano, manzana, espinaca, huevo, pollo, leche, palta, arroz o brocoli</strong>.
+          </p>
+        )}
 
-          {error && (
-            <p className="error-msg texto-m">
-              Alimento no encontrado. Prueba con: <strong>zanahoria, platano, manzana, espinaca, huevo, pollo, leche, palta, arroz o brocoli</strong>.
-            </p>
-          )}
+        {resultado ? (
+          <div className="results-container">
+            <h2 className="food-title">{resultado.nombre}</h2>
 
-          {resultado ? (
-            <div className="results-container">
-              <h2 className="food-title">{resultado.nombre}</h2>
-              
-              <div className="nutritional-grid">
-                <div className="nutrition-col">
-                  <h3>Energía y macronutrientes</h3>
-                  <ul className='texto-m'>
-                    {resultado.macro.map((item, idx) => (
-                      <li key={idx}><strong>{item.label}:</strong> {item.val}</li>
-                    ))}
-                  </ul>
-                </div>
+            <div className="nutritional-grid">
+              <div className="nutrition-col">
+                <h3>Energía y macronutrientes</h3>
+                <ul>
+                  {resultado.macro.map((item, idx) => (
+                    <li key={idx} className="texto-s"><strong>{item.label}:</strong> {item.val}</li>
+                  ))}
+                </ul>
+              </div>
 
-                <div className="nutrition-col">
-                  <h3>Minerales</h3>
-                  <ul className='texto-m'>
-                    {resultado.minerales.map((item, idx) => (
-                      <li key={idx}><strong>{item.label}:</strong> {item.val}</li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="nutrition-col">
+                <h3>Minerales</h3>
+                <ul>
+                  {resultado.minerales.map((item, idx) => (
+                    <li key={idx} className="texto-s"><strong>{item.label}:</strong> {item.val}</li>
+                  ))}
+                </ul>
+              </div>
 
-                <div className="nutrition-col">
-                  <h3>Vitaminas</h3>
-                  <ul className='texto-m'>
-                    {resultado.vitaminas.map((item, idx) => (
-                      <li key={idx}><strong>{item.label}:</strong> {item.val}</li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="nutrition-col">
+                <h3>Vitaminas</h3>
+                <ul>
+                  {resultado.vitaminas.map((item, idx) => (
+                    <li key={idx} className="texto-s"><strong>{item.label}:</strong> {item.val}</li>
+                  ))}
+                </ul>
               </div>
             </div>
-          ) : (
-            !error && (
-              <p className="info-text texto-m">
-                Muchos padres no revisan la información nutricional porque no está a la mano. 
-                Saber qué aporta cada alimento, como el hierro de una espinaca o el calcio de un yogur, 
-                te ayuda a decidir mejor qué ponerle a tu hijo en el plato.
-              </p>
-            )
-          )}
-        </div>
-        <Footer paginaActiva={props.paginaActiva} onCambiarPagina={props.onCambiarPagina}/>
-        </>
+          </div>
+        ) : (
+          !error && (
+            <p className="info-text texto-s">
+              Muchos padres no revisan la información nutricional porque no está a la mano.
+              Saber qué aporta cada alimento, como el hierro de una espinaca o el calcio de un yogur,
+              te ayuda a decidir mejor qué ponerle a tu hijo en el plato.
+            </p>
+          )
+        )}
+      </Tarjeta>
+      </div>
 
+      <Footer paginaActiva={props.paginaActiva} onCambiarPagina={props.onCambiarPagina} />
+    </>
   );
 }
-
-export default CalculadoraNutricional
