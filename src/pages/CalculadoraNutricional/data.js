@@ -29,7 +29,7 @@ export const ALIMENTOS_DB = {
     ]
   },
   platano: {
-    nombre: "PLÁTANO / BANANO",
+    nombre: "PLÁTANO",
     macro: [
       { label: "Energía", val: "89 kcal / 372 KJ" },
       { label: "Agua", val: "74.91 g" },
@@ -109,7 +109,7 @@ export const ALIMENTOS_DB = {
     ]
   },
   huevo: {
-    nombre: "HUEVO DE GALLINA (ENTERO)",
+    nombre: "HUEVO DE GALLINA",
     macro: [
       { label: "Energía", val: "155 kcal / 647 KJ" },
       { label: "Agua", val: "76.15 g" },
@@ -162,7 +162,7 @@ export const ALIMENTOS_DB = {
     ]
   },
   leche: {
-    nombre: "LECHE ENTERA DE VACA",
+    nombre: "LECHE",
     macro: [
       { label: "Energía", val: "61 kcal / 256 KJ" },
       { label: "Agua", val: "88.13 g" },
@@ -215,7 +215,7 @@ export const ALIMENTOS_DB = {
     ]
   },
   arroz: {
-    nombre: "ARROZ BLANCO COCIDO",
+    nombre: "ARROZ BLANCO",
     macro: [
       { label: "Energía", val: "130 kcal / 544 KJ" },
       { label: "Agua", val: "68.44 g" },
