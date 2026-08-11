@@ -6,15 +6,15 @@ import './Info.css'
 
 function Info(props) {
 
-    const recomendacion = recomendacionesPorEdad.find(
-        (r) => props.edad >= r.edadMin && props.edad <= r.edadMax
+    const recomendacionPorEdad = recomendacionesPorEdad.find(
+        (recomendacion) => props.edad >= recomendacion.edadMin && props.edad <= recomendacion.edadMax
     )
 
     const consejosDeEvitar = props.evitar && props.evitar.length > 0
-        ? consejos.filter((c) => props.evitar.includes(c.categoria))
+        ? consejos.filter((consejo) => props.evitar.includes(consejo.categoria))
         : []
 
-    const consejosGenerales = consejos.filter((c) => c.categoria === 'general')
+    const consejosGenerales = consejos.filter((consejo) => consejo.categoria == 'general')
 
     const consejosFiltrados = [...consejosGenerales, ...consejosDeEvitar]
 
@@ -35,7 +35,7 @@ function Info(props) {
                 titulo = 'INFORMACIÓN Y CONSEJOS'
             >
                 <div className="extra">
-                    <p class="info texto-m">{recomendacion.texto}</p>
+                    <p class="info texto-m">{recomendacionPorEdad.texto}</p>
                     <div class="consejos">
                         <div class="icono">
                             <img src={icono} alt="foco"/>

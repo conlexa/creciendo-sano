@@ -16,9 +16,14 @@ function MenuGenerado(props) {
     }
 
     return(
-        <Tarjeta paginaActiva={props.paginaActiva} titulo='MENÚ SEMANAL'>
+        <Tarjeta
+            paginaActiva={props.paginaActiva}
+            titulo='MENÚ SEMANAL'
+        >
             <div className="menu-oculto">
-                {props.menuSemana.map((dia, index) => (
+                {props.menuSemana.map((dia, index) => {
+                    const hayOpcion = props.puedeCambiar(index)
+                    return(
                     <div className="tarjeta-menu" key={dia.dia}>
                         <div>
                             <h3 className="dia">{dia.dia}</h3>
@@ -33,7 +38,7 @@ function MenuGenerado(props) {
                                     </div>
                                     <div>
                                         <p className="precio-plato texto-m">S/{dia.plato.precio}</p>
-                                        <button className="btn-cambiar texto-m" type="button" onClick={() => props.onCambiarPlato(index)}>
+                                        <button className="btn-cambiar texto-m" disabled={!hayOpcion} type="button" onClick={() => props.onCambiarPlato(index)}>
                                             Cambiar <i className="lni lnis-refresh-circle-1-clockwise"></i>
                                         </button>
                                     </div>
@@ -47,7 +52,8 @@ function MenuGenerado(props) {
                             <p className="texto-m">No hay opciones disponibles con los filtros elegidos.</p>
                         )}
                     </div>
-                ))}
+                    )
+                })}
                 <h3 className="menu-total">Total: S/{total} (basado en menús de 4 porciones)</h3>
             </div>
         </Tarjeta>
