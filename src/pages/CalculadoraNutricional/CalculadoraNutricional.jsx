@@ -44,8 +44,8 @@ export default function CalculadoraNutricional(props) {
   return (
     <>
       <Hero
-        titulo='Descubre el valor nutricional de cada alimento'
-        descripcion='Busca un alimento y conoce sus macronutrientes, minerales y vitaminas'
+        titulo='Descubre qué hay en cada alimento'
+        descripcion='Busca un alimento y conoce su valor nutricional'
         alt='alt'
         imagen={imagen}
         paginaActiva={props.paginaActiva}
