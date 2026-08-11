@@ -35,17 +35,17 @@ function Info(props) {
                 titulo = 'INFORMACIÓN Y CONSEJOS'
             >
                 <div className="extra">
-                    <p class="info texto-m">{recomendacionPorEdad.texto}</p>
-                    <div class="consejos">
-                        <div class="icono">
+                    <p className="info texto-m">{recomendacionPorEdad.texto}</p>
+                    <div className="consejos">
+                        <div className="icono">
                             <img src={icono} alt="foco"/>
                         </div>
-                        <div class="izq">
-                            <button onClick={anterior}><i class="lni lnis-arrow-left-circle"></i></button>
+                        <div className="izq">
+                            <button onClick={anterior}><i className="lni lnis-arrow-left-circle"></i></button>
                         </div>
-                        <p class="tip texto-m">{consejosFiltrados[indice].texto}</p>
-                        <div class="der">
-                            <button onClick={siguiente}><i class="lni lnis-arrow-right-circle"></i></button>
+                        <p className="tip texto-m">{consejosFiltrados[indice].texto}</p>
+                        <div className="der">
+                            <button onClick={siguiente}><i className="lni lnis-arrow-right-circle"></i></button>
                         </div>
                     </div>
                 </div>
