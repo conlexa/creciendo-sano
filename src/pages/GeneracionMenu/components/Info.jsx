@@ -25,7 +25,7 @@ function Info(props) {
     }
 
     const anterior = ()=> {
-        setIndice(indice == consejosFiltrados.length + 1 ? 0 : indice - 1)
+        setIndice(indice == 0 ? consejosFiltrados.length - 1 : indice - 1)
     }
 
     return(
