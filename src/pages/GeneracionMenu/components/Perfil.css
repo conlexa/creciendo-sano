@@ -142,3 +142,12 @@
     accent-color: var(--color-primario-500);
     color: var(--color-neutro-100);
 }
+
+.error-edad {
+    width: 100%;
+    background-color: #FDE8E8 ;
+    color: #991B1B;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+}

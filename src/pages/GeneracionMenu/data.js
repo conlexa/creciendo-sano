@@ -11,35 +11,38 @@ export const restriccionesAlimentarias = [
 export const diasSemana = [
   { dia: 'LUNES', razon: 'menestras', descripcion: 'Menestras y recarga de energía' },
   { dia: 'MARTES', razon: 'hierro', descripcion: 'Gran aporte de hierro' },
-  { dia: 'MIÉRCOLES', razon: 'proteina', descripcion: 'Proteína para el crecimiento' },
-  { dia: 'JUEVES', razon: 'economia', descripcion: 'Nutrición familiar y economía' },
+  { dia: 'MIÉRCOLES', razon: 'calcio', descripcion: 'Proteína para el crecimiento' },
+  { dia: 'JUEVES', razon: 'fibra', descripcion: 'Nutrición familiar y economía' },
   { dia: 'VIERNES', razon: 'omega3', descripcion: 'Omega 3 para el cerebro' },
-  { dia: 'SÁBADO', razon: 'familiar', descripcion: 'Proteína balanceada en familia' },
-  { dia: 'DOMINGO', razon: 'facil', descripcion: 'Menú de fácil preparación' },
+  { dia: 'SÁBADO', razon: 'proteinaMagra', descripcion: 'Proteína balanceada en familia' },
+  { dia: 'DOMINGO', razon: 'variedad', descripcion: 'Menú de fácil preparación' },
 ];
 
 export const menus = [
-    { id: 1, razon: 'menestras', menu: 'Lentejas con arroz', precio: 6, tag: 'Fuente de hierro', consejo: 'Acompáñalo con vitamina C', ingredientesSensibles: [], edadRecomendada: [3, 11] },
-    { id: 2, razon: 'menestras', menu: 'Frejoles con seco de pollo', precio: 8, tag: 'Alto en fibra', consejo: 'Ideal para acostumbrarlo a las menestras', ingredientesSensibles: [], edadRecomendada: [5, 11] },
-    { id: 3, razon: 'menestras', menu: 'Pallares con arroz y huevo frito', precio: 7, tag: 'Rico en proteína vegetal', consejo: 'Corta el huevo en trozos pequeños', ingredientesSensibles: ['huevo'], edadRecomendada: [3, 11] },
-    { id: 4, razon: 'hierro', menu: 'Sangrecita con arroz', precio: 5, tag: 'Fuente de hierro', consejo: 'Acompáñalo con vitamina C', ingredientesSensibles: [], edadRecomendada: [6, 11] },
-    { id: 5, razon: 'hierro', menu: 'Hígado a la jardinera', precio: 7, tag: 'Fuente de hierro', consejo: 'Sírvelo con verduras salteadas', ingredientesSensibles: [], edadRecomendada: [5, 11] },
-    { id: 6, razon: 'hierro', menu: 'Bistec de res con arroz', precio: 9, tag: 'Fuente de hierro', consejo: 'Corta la carne en trozos pequeños', ingredientesSensibles: [], edadRecomendada: [3, 11] },
-    { id: 7, razon: 'proteina', menu: 'Pollo a la plancha con arroz', precio: 8, tag: 'Alto en proteína', consejo: 'Retira bien la piel antes de servir', ingredientesSensibles: [], edadRecomendada: [3, 11] },
-    { id: 8, razon: 'proteina', menu: 'Pescado al horno con arroz', precio: 9, tag: 'Alto en proteína', consejo: 'Revisa bien que no tenga espinas', ingredientesSensibles: ['pescado'], edadRecomendada: [4, 11] },
-    { id: 9, razon: 'proteina', menu: 'Tortilla de huevo con arroz', precio: 5, tag: 'Alto en proteína', consejo: 'Agrega verduras picadas finas', ingredientesSensibles: ['huevo'], edadRecomendada: [3, 11] },
-    { id: 10, razon: 'economia', menu: 'Arroz con huevo frito', precio: 4, tag: 'Opción económica', consejo: 'Suma una porción de fruta aparte', ingredientesSensibles: ['huevo'], edadRecomendada: [3, 11] },
-    { id: 11, razon: 'economia', menu: 'Tallarines con salsa de tomate', precio: 5, tag: 'Opción económica', consejo: 'Agrega verduras ralladas a la salsa', ingredientesSensibles: ['gluten'], edadRecomendada: [3, 11] },
-    { id: 12, razon: 'economia', menu: 'Arroz con menestra y plátano', precio: 5, tag: 'Opción económica', consejo: 'El plátano aporta energía extra', ingredientesSensibles: [], edadRecomendada: [3, 11] },
-    { id: 13, razon: 'omega3', menu: 'Jurel al horno con arroz', precio: 8, tag: 'Fuente de omega 3', consejo: 'Revisa bien que no tenga espinas', ingredientesSensibles: ['pescado'], edadRecomendada: [4, 11] },
-    { id: 14, razon: 'omega3', menu: 'Caballa guisada con arroz', precio: 7, tag: 'Fuente de omega 3', consejo: 'Sírvelo con una ensalada fresca', ingredientesSensibles: ['pescado'], edadRecomendada: [4, 11] },
-    { id: 15, razon: 'omega3', menu: 'Ensalada de palta con pan', precio: 6, tag: 'Fuente de omega 3', consejo: 'Buena opción si no le gusta el pescado', ingredientesSensibles: ['gluten'], edadRecomendada: [3, 11] },
-    { id: 16, razon: 'familiar', menu: 'Lomo saltado con arroz', precio: 10, tag: 'Plato tradicional', consejo: 'Sirve una porción pequeña para el peque', ingredientesSensibles: [], edadRecomendada: [6, 11] },
-    { id: 17, razon: 'familiar', menu: 'Ají de gallina con arroz', precio: 9, tag: 'Plato tradicional', consejo: 'Modera el picante para niños pequeños', ingredientesSensibles: ['lacteos', 'frutos secos'], edadRecomendada: [6, 11] },
-    { id: 18, razon: 'familiar', menu: 'Arroz con pollo', precio: 8, tag: 'Plato tradicional', consejo: 'Ideal para compartir en familia', ingredientesSensibles: [], edadRecomendada: [3, 11] },
-    { id: 19, razon: 'facil', menu: 'Puré de papa con pollo desmenuzado', precio: 7, tag: 'Fácil de preparar', consejo: 'Lista en menos de 20 minutos', ingredientesSensibles: [], edadRecomendada: [3, 11] },
-    { id: 20, razon: 'facil', menu: 'Huevo revuelto con pan', precio: 4, tag: 'Fácil de preparar', consejo: 'Lista en menos de 10 minutos', ingredientesSensibles: ['huevo', 'gluten'], edadRecomendada: [3, 11] },
-    { id: 21, razon: 'facil', menu: 'Sopa de verduras con fideos', precio: 5, tag: 'Fácil de preparar', consejo: 'Ideal para días con poco tiempo', ingredientesSensibles: ['gluten'], edadRecomendada: [3, 11] },
+    { id: 1, razon: 'menestras', menu: 'Lentejas con arroz', precio: 15, tag: 'Proteína vegetal + Hierro', consejo: 'Complementa con 2 huevos pequeños o una porción de pollo, y un cítrico para absorber mejor el hierro', ingredientesSensibles: [], edadRecomendada: [3, 11] },
+    { id: 2, razon: 'menestras', menu: 'Frejoles con seco de pollo', precio: 22, tag: 'Proteína vegetal + Hierro', consejo: 'Sirve el pollo bien deshilachado para que sea más fácil de masticar para el niño', ingredientesSensibles: [], edadRecomendada: [5, 11] },
+    { id: 3, razon: 'menestras', menu: 'Pallares con arroz y huevo frito', precio: 16, tag: 'Proteína vegetal + Hierro', consejo: 'Usa 2 huevos pequeños por porción y córtalos en trozos pequeños', ingredientesSensibles: ['huevo'], edadRecomendada: [3, 11] },
+    { id: 4, razon: 'hierro', menu: 'Sangrecita con arroz', precio: 14, tag: 'Combate la anemia', consejo: 'Preséntala mezclada con el arroz para disimular el sabor fuerte si el niño es selectivo', ingredientesSensibles: [], edadRecomendada: [6, 11] },
+    { id: 5, razon: 'hierro', menu: 'Hígado a la jardinera', precio: 18, tag: 'Combate la anemia', consejo: 'Consúmelo con moderación (no más de una vez por semana) y córtalo en trozos pequeños y suaves', ingredientesSensibles: [], edadRecomendada: [5, 11] },
+    { id: 6, razon: 'hierro', menu: 'Bistec de res con arroz', precio: 30, tag: 'Combate la anemia', consejo: 'Corta la carne en trozos pequeños y blandos para facilitar la masticación', ingredientesSensibles: [], edadRecomendada: [3, 11] },
+    { id: 7, razon: 'calcio', menu: 'Tortilla de huevo con queso y arroz', precio: 16, tag: 'Aporte de Calcio y Vitamina D', consejo: 'Usa 2 huevos pequeños junto con el queso para el calcio', ingredientesSensibles: ['huevo', 'lacteos'], edadRecomendada: [3, 11] },
+    { id: 8, razon: 'calcio', menu: 'Sopa de pescado con leche y verduras', precio: 24, tag: 'Aporte de Calcio y Vitamina D', consejo: 'Retira bien las espinas antes de servir y desmenuza el pescado en trozos pequeños', ingredientesSensibles: ['pescado', 'lacteos'], edadRecomendada: [4, 11] },
+    { id: 9, razon: 'calcio', menu: 'Arroz con huevo y queso fresco', precio: 15, tag: 'Aporte de Calcio y Vitamina D', consejo: 'Usa 2 huevos pequeños; complementa con una fruta para redondear la comida', ingredientesSensibles: ['huevo', 'lacteos'], edadRecomendada: [3, 11] },
+    { id: 10, razon: 'fibra', menu: 'Puré de camote con pollo desmenuzado', precio: 18, tag: 'Fibra y Carbohidratos Complejos', consejo: 'Sirve el pollo bien desmenuzado mezclado con el puré para facilitar la comida', ingredientesSensibles: [], edadRecomendada: [3, 11] },
+    { id: 11, razon: 'fibra', menu: 'Yuca sancochada con ensalada de verduras', precio: 12, tag: 'Fibra y Carbohidratos Complejos', consejo: 'Complementa con 2 huevos pequeños o ½ filete de pollo para cubrir la proteína del almuerzo', ingredientesSensibles: [], edadRecomendada: [3, 11] },
+    { id: 12, razon: 'fibra', menu: 'Arroz integral con menestra y verduras salteadas', precio: 14, tag: 'Fibra y Carbohidratos Complejos', consejo: 'Agrega 2 huevos pequeños para reforzar el aporte de proteína', ingredientesSensibles: [], edadRecomendada: [3, 11] },
+    { id: 13, razon: 'omega3', menu: 'Jurel al horno con arroz', precio: 24, tag: 'Desarrollo cerebral y cardiovascular', consejo: 'Retira bien las espinas y sírvelo en trozos pequeños para evitar riesgos', ingredientesSensibles: ['pescado'], edadRecomendada: [4, 11] },
+    { id: 14, razon: 'omega3', menu: 'Caballa guisada con arroz', precio: 24, tag: 'Desarrollo cerebral y cardiovascular', consejo: 'Desmenuza bien el pescado y revisa que no queden espinas', ingredientesSensibles: ['pescado'], edadRecomendada: [4, 11] },
+    { id: 15, razon: 'omega3', menu: 'Bonito sudado con arroz', precio: 32, tag: 'Desarrollo cerebral y cardiovascular', consejo: 'Prefiere pescados blancos como lenguado o cojinova si el niño es más pequeño o sensible', ingredientesSensibles: ['pescado'], edadRecomendada: [5, 11] },
+    { id: 16, razon: 'proteinaMagra', menu: 'Pollo al horno con ensalada', precio: 20, tag: 'Crecimiento y regeneración muscular', consejo: 'Retira la piel antes de servir y corta el pollo en trozos pequeños', ingredientesSensibles: [], edadRecomendada: [3, 11] },
+    { id: 17, razon: 'proteinaMagra', menu: 'Pavita saltada con verduras y arroz', precio: 28, tag: 'Crecimiento y regeneración muscular', consejo: 'Corta la pavita en trozos pequeños; es una carne magra y de fácil digestión', ingredientesSensibles: [], edadRecomendada: [4, 11] },
+    { id: 18, razon: 'proteinaMagra', menu: 'Pechuga de pollo a la plancha con arroz', precio: 20, tag: 'Crecimiento y regeneración muscular', consejo: 'Córtala en tiras finas para que sea más fácil de comer para el niño', ingredientesSensibles: [], edadRecomendada: [3, 11] },
+    { id: 19, razon: 'variedad', menu: 'Puré de papa con pollo desmenuzado', precio: 20, tag: 'Fácil preparación en familia', consejo: 'Mezcla bien el pollo desmenuzado con el puré para una textura más fácil de comer', ingredientesSensibles: [], edadRecomendada: [3, 11] },
+    { id: 20, razon: 'variedad', menu: 'Tallarines con pollo y verduras', precio: 20, tag: 'Fácil preparación en familia', consejo: 'Corta los tallarines y el pollo en trozos pequeños para niños más chicos', ingredientesSensibles: ['gluten'], edadRecomendada: [3, 11] },
+    { id: 21, razon: 'variedad', menu: 'Sopa de verduras con fideos y huevo', precio: 12, tag: 'Fácil preparación en familia', consejo: 'Usa 2 huevos pequeños para que la sopa aporte suficiente proteína', ingredientesSensibles: ['gluten', 'huevo'], edadRecomendada: [3, 11] },
+    { id: 22, razon: 'omega3', menu: 'Ensalada de palta con huevo', precio: 14, tag: 'Fuente vegetal de Omega 3', consejo: 'Usa 2 huevos pequeños junto con la palta para grasas saludables', ingredientesSensibles: ['huevo'], edadRecomendada: [3, 11] },
+    { id: 23, razon: 'proteinaMagra', menu: 'Menudencias de pollo salteadas con arroz', precio: 15, tag: 'Crecimiento y regeneración muscular', consejo: 'Córtalas en trozos pequeños; es una opción económica de proteína de pollo', ingredientesSensibles: [], edadRecomendada: [3, 11] },
+    { id: 24, razon: 'hierro', menu: 'Picadillo de carne molida con arroz', precio: 16, tag: 'Combate la anemia', consejo: 'La carne molida es más fácil de masticar que un bistec entero para los más pequeños', ingredientesSensibles: [], edadRecomendada: [3, 11] },
 ]
 
 
@@ -58,23 +61,26 @@ export const consejos = [
     { id: 12, categoria: 'frutos secos', texto: 'Las semillas de girasol o zapallo son una alternativa sin frutos secos para snacks.' },
     { id: 13, categoria: 'pescado', texto: 'Si evitas pescado, obtén omega 3 de la palta, aceite de oliva o linaza molida.' },
     { id: 14, categoria: 'pescado', texto: 'El huevo y las carnes rojas también aportan buena proteína como alternativa al pescado.' },
+    { id: 15, categoria: 'general', texto: 'No es necesario dar carne todos los días. Se recomienda incluir menestras 2 a 3 veces por semana, combinadas con un alimento animal rico en hierro para mejorar su absorción.' },
+    { id: 16, categoria: 'general', texto: 'A medida que el niño crece y aumenta su actividad física, su requerimiento de proteína también sube. Ajusta las porciones según su edad y nivel de actividad.' },
+    { id: 17, categoria: 'pescado', texto: 'Prefiere pescados blancos como el lenguado o la cojinova en niños pequeños; suelen ser mejor tolerados que los pescados oscuros.' },
+    { id: 18, categoria: 'general', texto: 'Evita las frituras con frecuencia; prefiere preparaciones al horno, sudadas o a la plancha para una digestión más ligera.' },
 ]
 
 export const recomendacionesPorEdad = [
     {
         edadMin: 3,
         edadMax: 5,
-        texto: 'Los niños de 3 a 5 años están formando sus hábitos alimenticios. Es clave ofrecerles variedad de frutas y verduras, y evitar el exceso de azúcares y frituras.'
+        texto: 'Para niños de 3 a 5 años, es la etapa de formar hábitos y probar nuevos sabores. Asegura 2 porciones diarias de origen animal (huevo, pollo, pescado) y sirve los alimentos en trozos seguros.'
     },
     {
         edadMin: 6,
         edadMax: 8,
-        texto: 'Los niños de 6 a 8 años necesitan más energía por su mayor actividad física. Prioriza carbohidratos integrales, proteínas magras y suficiente calcio para sus huesos en crecimiento.'
+        texto: 'Para niños de 6 a 8 años, con mayor actividad escolar y física, se necesita energía sostenida. Prioriza el hierro de la sangrecita, hígado o pescado azul para prevenir la anemia y apoyar su aprendizaje.'
     },
     {
         edadMin: 9,
         edadMax: 11,
-        texto: 'Los niños de 9 a 11 años están cerca de la pubertad y requieren mayor aporte de hierro y proteína para sostener su crecimiento acelerado.'
+        texto: 'Para niños de 9 a 11 años, próximos al estirón puberal, aumentan las necesidades de energía y proteína. Para un plato balanceado, sirve la mitad con verduras, un cuarto con carne/huevo y un cuarto con arroz/tubérculos.'
     },
 ];
-

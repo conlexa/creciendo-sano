@@ -10,7 +10,7 @@
 
 .menu-oculto .icono-plato {
     height: 40px;
-    width: 40px;
+    min-width: 40px;
     background-color: var(--color-primario-500);
     mask-image: url('../assets/icono-plato.png');
     mask-size: contain;
@@ -89,7 +89,8 @@
 
 .menu-oculto .contenedor-pines {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    gap: 5px;
     padding-top: 10px;
 }
 
@@ -103,12 +104,12 @@
 }
 
 .menu-oculto .pin-consejo {
-    color: var(--color-neutro-100);
-    width: fit-content;
-    background-color: var(--color-secundario-magenta-500);
-    border: none;
-    border-radius: 20px;
-    padding: 3px 8px;
+    color: var(--color-neutro-300);
+    width: 100%;
+    background-color: var(--color-neutro-100);
+    border: 1px solid var(--color-primario-500);
+    border-radius: 10px;
+    padding: 5px 8px;
 }
 
 .menu-oculto .menu-total {
@@ -125,4 +126,10 @@
 .menu-oculto .info-plato .btn-cambiar:disabled:hover {
     background-color: var(--color-neutro-verdoso);
     filter: none;
+}
+
+.error-general {
+    color: var(--color-neutro-300);
+    padding: 115px 0;
+    text-align: center;
 }

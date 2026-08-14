@@ -26,71 +26,117 @@ function GeneracionMenu(props){
         )
     }
 
-    // Crea un array del menú semanal escogido con un presupuesto diario y con los platos más caros que encajen en ese presupuesto. Los guarda en MenuSemana y guarda los requerimientos en Datos Perfil
-    const generarMenuSemanal = (datos) => {
-        setDatosPerfil(datos)
+    // Función recursiva para encontrar la combinacion mas cara de menú y que no se pase del presupuesto
+    const buscarMejorMenuSemanal = (contador, combinacionActual, sumaActual, presupuestoTotal, datos) => {
 
-        const presupuestoDiario = datos.presupuesto / 7
+        if (sumaActual > presupuestoTotal) {
+            return null
+        }
 
-        const semana = diasSemana.map((diaSemana) => {
-            const opcionesPlatoDia = generarPlatosValidosDia(diaSemana.razon, datos.edad, datos.evitar)
+        if (contador == diasSemana.length) {
+            return {
+                semana: [...combinacionActual],
+                total: sumaActual
+            }
+        }
 
-            let elegido = null
-            if (opcionesPlatoDia.length > 0) {
-                const opcionesOrdenadas = opcionesPlatoDia.sort((a, b) => b.precio - a.precio)
-                elegido = opcionesOrdenadas.find((o) => o.precio <= presupuestoDiario)
-                if (!elegido) {
-                    elegido = opcionesOrdenadas[opcionesOrdenadas.length - 1]
+        const diaActual = diasSemana[contador]
+        const opcionesPlatoDia = generarPlatosValidosDia(diaActual.razon, datos.edad, datos.evitar)
+
+        if (opcionesPlatoDia.length == 0) {
+            return null
+        }
+
+        const opcionesOrdenadas = [...opcionesPlatoDia].sort((a, b) => b.precio - a.precio)
+
+        let mejorResultado = null
+
+        for (const plato of opcionesOrdenadas) {
+            const itemDia = {
+                dia: diaActual.dia,
+                razonDescripcion: diaActual.descripcion,
+                razon: diaActual.razon,
+                plato: plato
+            }
+
+            combinacionActual.push(itemDia)
+
+            const resultado = buscarMejorMenuSemanal(
+                contador + 1,
+                combinacionActual,
+                sumaActual + plato.precio,
+                presupuestoTotal,
+                datos
+            )
+
+            if (resultado) {
+                if (!mejorResultado || resultado.total > mejorResultado.total) {
+                    mejorResultado = resultado
                 }
             }
 
-            return { dia: diaSemana.dia, razonDescripcion: diaSemana.descripcion, razon: diaSemana.razon, plato: elegido }
-        })
+            combinacionActual.pop()
+        }
 
-        setMenuSemana(semana)
-        setMenuFueGenerado(true)
+        return mejorResultado
     }
 
-    // Genera un array con otras opciones de plato para el día escogido y sin considerar el actual
-    const obtenerOpcionesDeReemplazo = (indexDia) => {
-        const dia = menuSemana[indexDia]
-        const opciones = generarPlatosValidosDia(dia.razon, datosPerfil.edad, datosPerfil.evitar)
-        return opciones.filter((opcion) => opcion.id != dia.plato.id)
+    // Guadar los datos de perfil del niño y llama a la funcion buscarMejorMenuSemanal. El resultado lo manda a menuSemana y actualiza el menuFueGenerado
+    const generarMenuSemanal = (datos) => {
+        setDatosPerfil(datos)
+
+        const resultadoOptimo = buscarMejorMenuSemanal(0, [], 0, datos.presupuesto, datos)
+
+        if (resultadoOptimo) {
+            setMenuSemana(resultadoOptimo.semana)
+            setMenuFueGenerado(true)
+        } else {
+            setMenuSemana(resultadoOptimo)
+            setMenuFueGenerado(true)
+        }
     }
 
-    // Calcula el presupuesto semanal disponible
-    const calcularPresupuestoDisponible = (indexDia) => {
-        let presupuestoOtrosDias = 0
+    // Calcula el presupuesto disponible para el dia
+    const calcularPresupuestoDisponibleDia = (indexDia) => {
+        let costoTotalOtrosDias = 0
         menuSemana.forEach((diaActual, index) => {
             if (index != indexDia && diaActual.plato) {
-                presupuestoOtrosDias += diaActual.plato.precio
+                costoTotalOtrosDias += diaActual.plato.precio
             }
         })
-        return datosPerfil.presupuesto - presupuestoOtrosDias
+        return datosPerfil.presupuesto - costoTotalOtrosDias
     }
 
-    // Crea un nuevo array del menú semanal con otra opción de plato para el día escogido (la más barata) y calculando que no se pase del presupuesto semanal
+    // Crea un nuevo array del menú semanal con otra opción de plato para el día escogido (la más cara) y calculando que no se pase del presupuesto semanal
     const cambiarPlatoDelDia = (indexDia) => {
         const dia = menuSemana[indexDia]
-        const opciones = obtenerOpcionesDeReemplazo(indexDia)
-        const presupuestoDisponible = calcularPresupuestoDisponible(indexDia)
+        const opciones = generarPlatosValidosDia(dia.razon, datosPerfil.edad, datosPerfil.evitar)
+        const presupuestoDisponible = calcularPresupuestoDisponibleDia(indexDia)
 
-        const opcionesOrdenadas = opciones.sort((a, b) => a.precio - b.precio)
-        const nuevoPlato = opcionesOrdenadas.find((opcion) => opcion.precio <= presupuestoDisponible)
+        const opcionesOrdenadasMayorMenor = opciones.sort((a, b) => b.precio - a.precio)
 
-        if (!nuevoPlato) return
+        const opcionesQueCaben = opcionesOrdenadasMayorMenor.filter((plato) => plato.precio <= presupuestoDisponible)
+
+        if (opcionesQueCaben.length === 0) return
+
+        const indexPlatoActual = opcionesQueCaben.findIndex((plato) => plato.id == dia.plato.id)
+
+        const siguienteIndexPlato = (indexPlatoActual + 1) % opcionesQueCaben.length
+        const nuevoPlato = opcionesQueCaben[siguienteIndexPlato]
 
         const nuevoMenuSemana = [...menuSemana]
-        nuevoMenuSemana[indexDia] = { ...dia, plato: nuevoPlato }
+        nuevoMenuSemana[indexDia].plato = nuevoPlato
         setMenuSemana(nuevoMenuSemana)
     }
 
     // Devuelve un true o false dependiendo de si hay más opciones de plato disponibles para ese día y sin salirse del presupuesto
     const puedeCambiar = (indexDia) => {
-        const opciones = obtenerOpcionesDeReemplazo(indexDia)
-        const presupuestoDisponible = calcularPresupuestoDisponible(indexDia)
+        const dia = menuSemana[indexDia]
+        const opciones = generarPlatosValidosDia(dia.razon, datosPerfil.edad, datosPerfil.evitar)
+        const presupuestoDisponible = calcularPresupuestoDisponibleDia(indexDia)
 
-        return opciones.some((opcion) => opcion.precio <= presupuestoDisponible)
+        const opcionesQueCaben = opciones.filter((plato) => plato.precio <= presupuestoDisponible)
+        return opcionesQueCaben.length > 1
     }
 
     return(

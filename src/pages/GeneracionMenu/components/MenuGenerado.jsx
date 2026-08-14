@@ -2,18 +2,19 @@ import Tarjeta from "../../../components/Tarjeta"
 import './MenuGenerado.css'
 
 function MenuGenerado(props) {
+    if (props.menuSemana == null) {
+        return (
+            <Tarjeta className='aaaa' paginaActiva={props.paginaActiva} titulo='MENÚ SEMANAL'>
+                <p className="error-general texto-m">Por el momento, no hay opciones disponibles para el presupuesto asignado y/o alimentos seleccionados.</p>
+            </Tarjeta>
+        )
+    }
+
     let total = 0
     props.menuSemana.forEach((dia) => {
         if (dia.plato) total = total + dia.plato.precio
     })
 
-    if (total > props.presupuesto) {
-        return (
-            <Tarjeta paginaActiva={props.paginaActiva} titulo='MENÚ SEMANAL'>
-                <p className="texto-m">No hay opciones disponibles para el presupuesto asignado.</p>
-            </Tarjeta>
-        )
-    }
 
     return(
         <Tarjeta
@@ -49,7 +50,7 @@ function MenuGenerado(props) {
                                 </div>
                             </>
                         ) : (
-                            <p className="texto-m">No hay opciones disponibles con los filtros elegidos.</p>
+                            <p className="error texto-m">No hay opciones disponibles con los filtros elegidos.</p>
                         )}
                     </div>
                     )

@@ -6,8 +6,9 @@ import './Perfil.css'
 
 function Perfil(props) {
     const [edad, setEdad] = useState(null)
-    const [presupuesto, setPresupuesto] = useState(50)
+    const [presupuesto, setPresupuesto] = useState(150)
     const [evitar, setEvitar] = useState([])
+    const [errorEdad, setErrorEdad] = useState(false)
 
     // Actualiza el array de alimentos a evitar
     const actualizarEvitar = (id, estaMarcado) => {
@@ -23,8 +24,10 @@ function Perfil(props) {
         evento.preventDefault()
 
         if (!edad) {
-            alert('Por favor, selecciona la edad')
+            setErrorEdad(true)
             return
+        } else {
+            setErrorEdad(false)
         }
 
         props.onGenerarMenu({
@@ -41,6 +44,7 @@ function Perfil(props) {
                 titulo='PERFIL Y PRESUPUESTO'
             >
                 <form className="formulario-menu" onSubmit={enviarFormulario}>
+                    {errorEdad ? <div className="error-edad texto-s">Por favor, selecciona la edad</div> : null}                    
                     <label className="texto-m">Edad:</label>
                     <div className="edad-selector">
                         {edades.map((edad)=>(
@@ -61,8 +65,8 @@ function Perfil(props) {
                         <input
                             type="range"
                             className="slider"
-                            min="0"
-                            max="100"
+                            min="100"
+                            max="200"
                             step='10'
                             value={presupuesto}
                             onChange={(evento)=> setPresupuesto(evento.target.value)}
