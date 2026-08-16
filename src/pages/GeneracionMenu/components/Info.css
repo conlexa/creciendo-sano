@@ -51,6 +51,7 @@
     line-height: 0;
     cursor: pointer;
     border: 0;
+    background-color: transparent;
 }
 
 .extra .consejos .izq i, .der i{

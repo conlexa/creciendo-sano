@@ -12,46 +12,131 @@ import { menus, diasSemana } from "./data"
 import './GeneracionMenu.css'
 
 function GeneracionMenu(props){
-    const [menuGenerado, setMenuGenerado] = useState(false)
+    const [menuFueGenerado, setMenuFueGenerado] = useState(false)
     const [menuSemana, setMenuSemana] = useState([])
     const [datosPerfil, setDatosPerfil] = useState(null)
 
-    const platosValidos = (razon, edad, evitar) => {
-        return menus.filter((m) =>
-            m.razon == razon &&
-            edad >= m.edadRecomendada[0] &&
-            edad <= m.edadRecomendada[1] &&
-            !m.alergenos.some((e) => evitar.includes(e))
+    // Crea un array de opciones de menús para un día que encajan con la razon, la edad recomendada y la ausencia de ingredientes seleccionados
+    const generarPlatosValidosDia = (razon, edad, evitar) => {
+        return menus.filter((menu) =>
+            menu.razon == razon &&
+            edad >= menu.edadRecomendada[0] &&
+            edad <= menu.edadRecomendada[1] &&
+            !menu.ingredientesSensibles.some((ingredienteSensible) => evitar.includes(ingredienteSensible))
         )
     }
 
-    const generarMenu = (datos) => {
-        setDatosPerfil(datos)
+    // Función recursiva para encontrar la combinacion mas cara de menú y que no se pase del presupuesto
+    const buscarMejorMenuSemanal = (contador, combinacionActual, sumaActual, presupuestoTotal, datos) => {
 
-        const semana = diasSemana.map((e) => {
-            const opciones = platosValidos(e.razon, datos.edad, datos.evitar)
-            const elegido = opciones.length > 0
-                ? opciones.sort((a, b) => a.precio - b.precio)[0]
-                : null
-            return { dia: e.dia, razonDescripcion: e.descripcion, razon: e.razon, plato: elegido }
-        })
+        if (sumaActual > presupuestoTotal) {
+            return null
+        }
 
-        setMenuSemana(semana)
-        setMenuGenerado(true)
+        if (contador == diasSemana.length) {
+            return {
+                semana: [...combinacionActual],
+                total: sumaActual
+            }
+        }
+
+        const diaActual = diasSemana[contador]
+        const opcionesPlatoDia = generarPlatosValidosDia(diaActual.razon, datos.edad, datos.evitar)
+
+        if (opcionesPlatoDia.length == 0) {
+            return null
+        }
+
+        const opcionesOrdenadas = [...opcionesPlatoDia].sort((a, b) => b.precio - a.precio)
+
+        let mejorResultado = null
+
+        for (const plato of opcionesOrdenadas) {
+            const itemDia = {
+                dia: diaActual.dia,
+                razonDescripcion: diaActual.descripcion,
+                razon: diaActual.razon,
+                plato: plato
+            }
+
+            combinacionActual.push(itemDia)
+
+            const resultado = buscarMejorMenuSemanal(
+                contador + 1,
+                combinacionActual,
+                sumaActual + plato.precio,
+                presupuestoTotal,
+                datos
+            )
+
+            if (resultado) {
+                if (!mejorResultado || resultado.total > mejorResultado.total) {
+                    mejorResultado = resultado
+                }
+            }
+
+            combinacionActual.pop()
+        }
+
+        return mejorResultado
     }
 
+    // Guadar los datos de perfil del niño y llama a la funcion buscarMejorMenuSemanal. El resultado lo manda a menuSemana y actualiza el menuFueGenerado
+    const generarMenuSemanal = (datos) => {
+        setDatosPerfil(datos)
+
+        const resultadoOptimo = buscarMejorMenuSemanal(0, [], 0, datos.presupuesto, datos)
+
+        if (resultadoOptimo) {
+            setMenuSemana(resultadoOptimo.semana)
+            setMenuFueGenerado(true)
+        } else {
+            setMenuSemana(resultadoOptimo)
+            setMenuFueGenerado(true)
+        }
+    }
+
+    // Calcula el presupuesto disponible para el dia
+    const calcularPresupuestoDisponibleDia = (indexDia) => {
+        let costoTotalOtrosDias = 0
+        menuSemana.forEach((diaActual, index) => {
+            if (index != indexDia && diaActual.plato) {
+                costoTotalOtrosDias += diaActual.plato.precio
+            }
+        })
+        return datosPerfil.presupuesto - costoTotalOtrosDias
+    }
+
+    // Crea un nuevo array del menú semanal con otra opción de plato para el día escogido (la más cara) y calculando que no se pase del presupuesto semanal
     const cambiarPlatoDelDia = (indexDia) => {
         const dia = menuSemana[indexDia]
-        const opciones = platosValidos(dia.razon, datosPerfil.edad, datosPerfil.evitar)
-        const opcionesSinRepetir = opciones.filter((e) => e.id !== dia.plato?.id)
+        const opciones = generarPlatosValidosDia(dia.razon, datosPerfil.edad, datosPerfil.evitar)
+        const presupuestoDisponible = calcularPresupuestoDisponibleDia(indexDia)
 
-        const nuevo = opcionesSinRepetir.length > 0
-            ? opcionesSinRepetir[Math.floor(Math.random() * opcionesSinRepetir.length)]
-            : dia.plato
+        const opcionesOrdenadasMayorMenor = opciones.sort((a, b) => b.precio - a.precio)
 
-        const nuevaSemana = [...menuSemana]
-        nuevaSemana[indexDia] = { ...dia, plato: nuevo }
-        setMenuSemana(nuevaSemana)
+        const opcionesQueCaben = opcionesOrdenadasMayorMenor.filter((plato) => plato.precio <= presupuestoDisponible)
+
+        if (opcionesQueCaben.length === 0) return
+
+        const indexPlatoActual = opcionesQueCaben.findIndex((plato) => plato.id == dia.plato.id)
+
+        const siguienteIndexPlato = (indexPlatoActual + 1) % opcionesQueCaben.length
+        const nuevoPlato = opcionesQueCaben[siguienteIndexPlato]
+
+        const nuevoMenuSemana = [...menuSemana]
+        nuevoMenuSemana[indexDia].plato = nuevoPlato
+        setMenuSemana(nuevoMenuSemana)
+    }
+
+    // Devuelve un true o false dependiendo de si hay más opciones de plato disponibles para ese día y sin salirse del presupuesto
+    const puedeCambiar = (indexDia) => {
+        const dia = menuSemana[indexDia]
+        const opciones = generarPlatosValidosDia(dia.razon, datosPerfil.edad, datosPerfil.evitar)
+        const presupuestoDisponible = calcularPresupuestoDisponibleDia(indexDia)
+
+        const opcionesQueCaben = opciones.filter((plato) => plato.precio <= presupuestoDisponible)
+        return opcionesQueCaben.length > 1
     }
 
     return(
@@ -63,26 +148,48 @@ function GeneracionMenu(props){
                 imagen={imagen}
                 paginaActiva={props.paginaActiva}
             />
-            <Nav paginaActiva={props.paginaActiva} onCambiarPagina={props.onCambiarPagina} imagenNav={imagenNav} />
+            <Nav
+                paginaActiva={props.paginaActiva}
+                onCambiarPagina={props.onCambiarPagina}
+                imagenNav={imagenNav}
+            />
             <div className="contenedor contenedor-secciones">
                 <div className="contenedor-secciones-izquierda">
                     <section className="contenedor-perfil">
-                        <Perfil paginaActiva={props.paginaActiva} onGenerarMenu={generarMenu} />
+                        <Perfil
+                            paginaActiva={props.paginaActiva}
+                            onGenerarMenu={generarMenuSemanal}
+                        />
                     </section>
-                    {menuGenerado && (
+                    {menuFueGenerado && (
                         <section className="contenedor-info">
-                            <Info paginaActiva={props.paginaActiva} evitar={datosPerfil?.evitar} edad={datosPerfil?.edad} />
+                            <Info
+                                paginaActiva={props.paginaActiva}
+                                evitar={datosPerfil.evitar}
+                                edad={datosPerfil.edad}
+                            />
                         </section>
                     )}
                 </div>
                 <section className="contenedor-menu">
-                    {menuGenerado
-                        ? <MenuGenerado paginaActiva={props.paginaActiva} menuSemana={menuSemana} onCambiarPlato={cambiarPlatoDelDia} presupuesto={datosPerfil?.presupuesto} />
-                        : <Menu paginaActiva={props.paginaActiva}/>
+                    {menuFueGenerado
+                        ? <MenuGenerado
+                            paginaActiva={props.paginaActiva}
+                            menuSemana={menuSemana}
+                            onCambiarPlato={cambiarPlatoDelDia}
+                            presupuesto={datosPerfil.presupuesto}
+                            puedeCambiar={puedeCambiar}
+                        />
+                        : <Menu
+                            paginaActiva={props.paginaActiva}
+                        />
                     }
                 </section>
             </div>
-            <Footer paginaActiva={props.paginaActiva} onCambiarPagina={props.onCambiarPagina}/>
+            <Footer
+                paginaActiva={props.paginaActiva}
+                onCambiarPagina={props.onCambiarPagina}
+            />
         </>
     )
 }
